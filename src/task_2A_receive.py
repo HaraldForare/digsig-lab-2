@@ -5,9 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-from task_1 import get_random_signal
-
-
+from task_1A import get_random_signal
 
 D = 1
 alphas = (
@@ -16,15 +14,10 @@ alphas = (
     -0.99
 )
 
-
 transmitted_signal = get_random_signal(64)
-
-
 
 def get_received_signal(transmitted_signal, reflection_scaling_coefficient):
     return np.convolve(transmitted_signal, np.array([1, reflection_scaling_coefficient]))
-
-
 
 
 _doRenderGraphs = __name__ == "__main__"

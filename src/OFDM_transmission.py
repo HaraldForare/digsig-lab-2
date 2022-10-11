@@ -1,6 +1,6 @@
 
 import numpy as np
-
+import math
 
 def OFDM_transmission(x_n, noise_variance, alpha):
     N = len(x_n)
@@ -16,13 +16,11 @@ def OFDM_transmission(x_n, noise_variance, alpha):
 
     r_n = np.convolve(s_n, H_n)
 
-    # Add noise
-    noise = np.random.normal(0, np.sqrt(noise_variance / 64 / 2), len(r_n))
+    # Add noise to both real and imaginary components
+    noise = np.random.normal(0, math.sqrt(noise_variance / N / 2), len(r_n))
     noise = noise + 1j*noise
 
     r_n += noise
-
-    breakpoint()
 
     r_tilde_n = r_n[L - 1:-(L - 1)]
 
